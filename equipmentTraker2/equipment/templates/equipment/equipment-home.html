@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<h2>test this page for the main equipment</h2>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<p>equipment</p>
+<!-- <p>{{ equipmentall }}</p> -->
+
+{% for far in equipmentall %}
+<li>{{far}}</li>
+{% endfor %}
+
+{% endblock %}
