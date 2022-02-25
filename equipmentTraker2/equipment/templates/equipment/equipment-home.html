@@ -1,14 +1,58 @@
 {% extends 'base.html' %}
-{% block body_block %}
-<h2>test this page for the main equipment</h2>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-<p>equipment</p>
-<!-- <p>{{ equipmentall }}</p> -->
 
-{% for far in equipmentall %}
-<li>{{far}}</li>
-{% endfor %}
+{% block body_block %}
+<!-- <h1>equipment</h1> -->
+
+<h1>Fixed Asset Register</h1>
+<p>Below is the list of the equipment available in KIU location</p>
+<!-- Adding the filter form here -->
+
+<div class="row">
+	<div class="col">
+		<div class="card card-body"  >
+			<!-- I liked this method below as it shows the table in a better way -->
+			<form  method="GET">
+				<table>
+					{{ form.as_table}}
+				</table>
+				<button type="submit" class="btn btn-primary" >Search</button>
+				<a class="btn btn-outline-dark" href="{% url 'equipment_new' %}">Add New Asset</a>
+			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+
+
+<table class="table table-striped">
+	<thead >
+		<tr>
+			<th scope="col">Asset No</th>
+			<th scope="col">Serial No</th>
+			<th scope="col">Description</th>
+			<th scope="col">Equipment Type</th>
+			<th scope="col">BU</th>
+			<th scope="col">BL</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for fa in equipmentall %}
+
+		<tr>
+			<td>{{ fa.asset_num }}</td>
+			<td>{{ fa.serial_num }}</td>
+			<td>{{ fa.description }}</td>
+			<td>{{ fa.equ_type }}</td>
+			<td>{{ fa.bu }}</td>
+			<td>{{ fa.bl }}</td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+
+<br>
+<br>
 
 {% endblock %}
